@@ -7,17 +7,23 @@ Filetype detection, syntax highlighting, auto-formatting, auto-completion, and o
 Compatible with both [`ledger`][ledgercli] and [`hledger`][hledger].
 See [plaintextaccounting.org][pta] for background information and other useful links.
 
-## Usage
+## Installation
 
-Install as you would any other VIM plugin.
-There are a variety of ways depending on your plugin manager.
-For example with [Pathogen](https://github.com/tpope/vim-pathogen) you would clone this repository into your configuration directory.
-With [vim-plug](https://github.com/junegunn/vim-plug) and many similar ones, you would declare it in your rc file like this, then run `:PlugInstall`:
+### Debian / Ubuntu derivatives released in or after 2022
+- Assuming you've installed the ledger or hledger, they are both available via apt.
 
-
-```vimscript
-Plug 'ledger/vim-ledger'
+For ledger:
 ```
+sudo apt install vim-ledger
+```
+
+For hledger (these are needed because the plugin/package currently has a bug [143](https://github.com/ledger/vim-ledger/issues/143) when used on vim 8+.
+```
+echo "filetype plugin indent on>> ~/.vimrc
+echo "syntax on" >> ~/.vimrc
+```
+
+Then install via git with the VIM (version 8.0+) packages functionality listed below.
 
 ### Install using VIM packages functionality (vim 8+)
 
@@ -28,14 +34,14 @@ cd ~/.vim/pack/ledger/start
 git clone <URL>
 ```
 
-Edit .vimrc and append the line:
-```
-set loadplugins
-```
-
+### Using an external vim plugin/package manager
+Install as you would any other VIM plugin. There are a variety of ways depending on your plugin manager.
+- For example with [Pathogen](https://github.com/tpope/vim-pathogen) you would clone this repository into your configuration directory. 
+- With [vim-plug](https://github.com/junegunn/vim-plug) and many similar ones, you would declare it in your rc file like this: ```Plug 'ledger/vim-ledger'```, then run `:PlugInstall`:
 
 You can also manually copy the corresponding directories into your VIM plugins directory.
 
+## Usage
 One installed this plugin will identify files ending with `.ldg`, `.ledger`, or `.journal` as ledger files automatically.
 Alternatively if you use a different extension you can add a modeline to each like this:
 
